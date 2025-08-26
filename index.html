@@ -7,10 +7,7 @@
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-    <div class="construction-notice"></div>
-        <p style= "text-align: center;">This website is under construction.</p>
-    </div>
-
+    <!-- Header -->
     <header>
         <div class="container">
             <h1>Malinda's Portfolio</h1>
@@ -23,9 +20,11 @@
         </div>
     </header>
 
+    <!-- Main Content -->
     <main>
+        <!-- About Section -->
         <section id="about" class="section">
-            <div class="container">
+            <div class="container card">
                 <h2>About Me</h2>
                 <img src="images/profile.jpg" alt="Malinda's profile" class="profile-img">
                 <p>
@@ -35,52 +34,84 @@
             </div>
         </section>
 
+        <!-- Projects Section -->
         <section id="projects" class="section">
             <div class="container">
                 <h2>Projects</h2>
-                <div class="project">
-                    <h3>Tea Outlet Management System</h3>
-                    <p>Managed inventory and customer relations through a web-based system.</p>
-                </div>
-                <div class="project">
-                    <h3>POS System</h3>
-                    <p>Developed a functional POS system using HTML, CSS, JS, and PHP.</p>
-                </div>
-                <div class="project">
-                    <h3>Micromouse Maze Solver</h3>
-                    <p>Implemented the flood-fill algorithm for maze-solving robotics competitions.</p>
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>Tea Outlet Management System</h3>
+                        <p>Managed inventory and customer relations through a web-based system.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Co-working Space Reservation System</h3>
+                        <p>Built a reservation system focused on REST APIs to streamline bookings.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Seed Vault Storing System</h3>
+                        <p>
+                            Automated seed vault storing with a robot arm and conveyor belt. 
+                            Robotics programming was done using Arduino.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3>E-commerce Platform (Urbanfood)</h3>
+                        <p>
+                            Built a centralized platform for food buyers and sellers. 
+                            Customers can register, log in, and browse products while 
+                            sellers can list their items.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- Skills Section -->
         <section id="skills" class="section">
-            <div class="container">
+            <div class="container card">
                 <h2>Skills</h2>
                 <ul>
-                    <li>Python, Java, C#</li>
-                    <li>Web Development: HTML, CSS, JavaScript, PHP</li>
-                    <li>Machine Learning: Scikit-learn, TensorFlow (beginner)</li>
-                    <li>Robotics: Arduino, Microcontrollers</li>
+                    <li><strong>Programming:</strong> Python, Java, C#, C++, C</li>
+                    <li><strong>Web Development:</strong> HTML, CSS, JavaScript, PHP</li>
+                    <li><strong>Databases:</strong> MongoDB, SQLite, Oracle, MySQL</li>
+                    <li><strong>Robotics:</strong> Arduino, Microcontrollers</li>
                 </ul>
             </div>
         </section>
 
+        <!-- Contact Section -->
         <section id="contact" class="section">
-            <div class="container">
+            <div class="container card">
                 <h2>Contact Me</h2>
                 <p>Email: <a href="mailto:greshanamarakoon@gmail.com">greshanamarakoon@gmail.com</a></p>
-                <p>LinkedIn: <a href="https://linkedin.com/in/malindaamarakoon">Malinda LinkedIn</a></p>
-                <p>GitHub: <a href="https://github.com/Malinda01">Malinda GitHub</a></p>
+                <p>LinkedIn: <a href="https://linkedin.com/in/malindaamarakoon" target="_blank">Malinda Amarakoon</a></p>
+                <p>GitHub: <a href="https://github.com/Malinda01" target="_blank">Malinda01</a></p>
             </div>
         </section>
+
+        
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container card">
+                <p>
+                    <a href="https://drive.google.com/file/d/1gYGfZPbiHFTKAXsc_5P0zSb6xNOkF1wJ/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                        Download My CV
+                    </a>
+                </p>
+            </div>
+        </section>
+
+        
     </main>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>© 2024 Malinda's Portfolio. All rights reserved.</p>
+            <p>© 2025 Malinda's Portfolio. All rights reserved.</p>
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="scripts/script.js"></script>
 </body>
 </html>

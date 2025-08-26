@@ -1,59 +1,92 @@
+/* General Reset */
 body {
     font-family: Arial, sans-serif;
-    line-height: 1.6;
     margin: 0;
-    padding: 0;
-    background: #f4f4f4;
+    background: #f5f6fa;
     color: #333;
 }
 
+/* Header */
 header {
-    background: #333;
+    background: #222;
     color: #fff;
     padding: 1rem 0;
-    text-align: center;
 }
-
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
 header nav a {
     color: #fff;
-    margin: 0 15px;
+    margin-left: 1rem;
     text-decoration: none;
+    font-weight: bold;
 }
-
 header nav a:hover {
-    text-decoration: underline;
+    color: #00aaff;
 }
 
+/* Sections */
 .section {
-    padding: 2rem 0;
-    text-align: center;
+    padding: 3rem 0;
 }
-
 .container {
-    width: 80%;
+    width: 90%;
     margin: auto;
-    overflow: hidden;
 }
 
+/* Card Style */
+.card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* Card Grid for Projects */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Profile Image */
 .profile-img {
     width: 150px;
     border-radius: 50%;
     margin: 1rem 0;
+    display: block;
 }
 
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-ul li {
-    margin: 10px 0;
-}
-
+/* Footer */
 footer {
+    background: #222;
+    color: #fff;
     text-align: center;
     padding: 1rem 0;
-    background: #333;
-    color: #fff;
-    margin-top: 20px;
 }
+
+/* Center profile image */
+.profile-img {
+    width: 150px;
+    border-radius: 50%;
+    margin: 1rem auto;   /* auto makes it center horizontally */
+    display: block;
+}
+
+
+/* Center section headings */
+#about h2
+{
+    text-align: center;
+}
+
