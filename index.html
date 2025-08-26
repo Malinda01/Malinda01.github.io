@@ -3,47 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prasad Pereira</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Malinda's Portfolio</title>
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
+    <div class="construction-notice"></div>
+        <p style= "text-align: center;">This website is under construction.</p>
+    </div>
+
     <header>
-        <h1>Prasad Pereira</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#filmography">Filmography</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <h1>Malinda's Portfolio</h1>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
     </header>
+
     <main>
-        <section id="home">
-            <h2>Assistant Director – Film & TV</h2>
-            <p>Experienced Assistant Director available for hire.</p>
+        <section id="about" class="section">
+            <div class="container">
+                <h2>About Me</h2>
+                <img src="images/profile.jpg" alt="Malinda's profile" class="profile-img">
+                <p>
+                    Hi, I'm Malinda! A second-year Software Engineering undergraduate at NIBM Colombo. 
+                    I specialize in building software solutions and aspire to become a Machine Learning professional.
+                </p>
+            </div>
         </section>
-        <section id="experience">
-            <h2>Experience</h2>
-            <p>With nearly a decade of experience...</p>
+
+        <section id="projects" class="section">
+            <div class="container">
+                <h2>Projects</h2>
+                <div class="project">
+                    <h3>Tea Outlet Management System</h3>
+                    <p>Managed inventory and customer relations through a web-based system.</p>
+                </div>
+                <div class="project">
+                    <h3>POS System</h3>
+                    <p>Developed a functional POS system using HTML, CSS, JS, and PHP.</p>
+                </div>
+                <div class="project">
+                    <h3>Micromouse Maze Solver</h3>
+                    <p>Implemented the flood-fill algorithm for maze-solving robotics competitions.</p>
+                </div>
+            </div>
         </section>
-        <section id="filmography">
-            <h2>Filmography</h2>
-            <p>Feature films, TV commercials...</p>
+
+        <section id="skills" class="section">
+            <div class="container">
+                <h2>Skills</h2>
+                <ul>
+                    <li>Python, Java, C#</li>
+                    <li>Web Development: HTML, CSS, JavaScript, PHP</li>
+                    <li>Machine Learning: Scikit-learn, TensorFlow (beginner)</li>
+                    <li>Robotics: Arduino, Microcontrollers</li>
+                </ul>
+            </div>
         </section>
-        <section id="gallery">
-            <h2>Gallery</h2>
-            <p>Images...</p>
-        </section>
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>Email: example@example.com</p>
+
+        <section id="contact" class="section">
+            <div class="container">
+                <h2>Contact Me</h2>
+                <p>Email: <a href="mailto:greshanamarakoon@gmail.com">greshanamarakoon@gmail.com</a></p>
+                <p>LinkedIn: <a href="https://linkedin.com/in/malindaamarakoon">Malinda LinkedIn</a></p>
+                <p>GitHub: <a href="https://github.com/Malinda01">Malinda GitHub</a></p>
+            </div>
         </section>
     </main>
+
     <footer>
-        <p>&copy; 2024 Prasad Pereira - All Rights Reserved.</p>
+        <div class="container">
+            <p>© 2024 Malinda's Portfolio. All rights reserved.</p>
+        </div>
     </footer>
-    <script src="scripts.js"></script>
+
+    <script src="scripts/script.js"></script>
 </body>
 </html>
