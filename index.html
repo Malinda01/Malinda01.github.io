@@ -1,118 +1,314 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Malinda Amarakoon</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <title>Malinda Amarakoon - Portfolio</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a192f; /* A darker navy blue for the background */
+            color: #ccd6f6; /* A light, soft text color */
+        }
+        .text-accent {
+            color: #64ffda; /* A bright mint/cyan for accents */
+        }
+        .bg-accent {
+            background-color: #64ffda;
+        }
+        .border-accent {
+            border-color: #64ffda;
+        }
+        .bg-card {
+            background-color: #112240; /* A lighter navy for cards/nav */
+        }
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
 </head>
-<body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <h1>Malinda Amarakoon</h1>
-            <nav>
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#skills">Skills</a>
-                <a href="#contact">Contact</a>
-            </nav>
-        </div>
+<body class="antialiased">
+
+    <!-- Header / Navigation -->
+    <header class="bg-card shadow-lg fixed top-0 left-0 right-0 z-50">
+        <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo / Name -->
+                <div class="flex-shrink-0">
+                    <a href="#home" class="text-2xl font-bold text-accent">Malinda Amarakoon</a>
+                </div>
+                
+                <!-- Navigation Links -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#about" class="text-gray-300 hover:text-accent px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">01. About</a>
+                        <a href="#projects" class="text-gray-300 hover:text-accent px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">02. Projects</a>
+                        <a href="#contact" class="text-gray-300 hover:text-accent px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">03. Contact</a>
+                        <a href="#" target="_blank" class="text-accent border border-accent hover:bg-accent hover:text-gray-900 px-4 py-2 rounded-md text-sm font-medium transition-all duration-300">
+                            Resume
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Button (Optional - simple links for now) -->
+                <div class="md:hidden flex items-center space-x-2">
+                     <a href="#about" class="text-gray-300 hover:text-accent px-2 py-1 rounded-md text-xs font-medium">About</a>
+                     <a href="#projects" class="text-gray-300 hover:text-accent px-2 py-1 rounded-md text-xs font-medium">Projects</a>
+                     <a href="#contact" class="text-gray-300 hover:text-accent px-2 py-1 rounded-md text-xs font-medium">Contact</a>
+                </div>
+            </div>
+        </nav>
     </header>
 
     <!-- Main Content -->
-    <main>
-        <!-- About Section -->
-        <section id="about" class="section">
-            <div class="container card">
-                <h2>About Me</h2>
-                <img src="images/profile.jpg" alt="Malinda's profile" class="profile-img">
-                <p>
-                    👋 Hi, I’m Malinda!
-                    I’m a second-year Software Engineering undergraduate at NIBM Colombo, passionate about designing and building impactful software solutions. 
-                    I enjoy tackling challenges, learning new technologies, and creating applications that make a real difference.
-                </p>
-            </div>
-        </section>
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24"> <!-- Added padding-top for fixed header -->
 
-        <!-- Projects Section -->
-        <section id="projects" class="section">
-            <div class="container">
-                <h2>Projects</h2>
-                <div class="card-grid">
-                    <div class="card">
-                        <h3>Tea Outlet Management System</h3>
-                        <p>Managed inventory and customer relations through a web-based system.</p>
-                    </div>
-                    <div class="card">
-                        <h3>Co-working Space Reservation System</h3>
-                        <p>Built a reservation system focused on REST APIs to streamline bookings.</p>
-                    </div>
-                    <div class="card">
-                        <h3>Seed Vault Storing System</h3>
-                        <p>
-                            Automated seed vault storing with a robot arm and conveyor belt. 
-                            Robotics programming was done using Arduino.
-                        </p>
-                    </div>
-                    <div class="card">
-                        <h3>E-commerce Platform (Urbanfood)</h3>
-                        <p>
-                            Built a centralized platform for food buyers and sellers. 
-                            Customers can register, log in, and browse products while 
-                            sellers can list their items.
-                        </p>
+        <!-- Section 1: Hero -->
+        <section id="home" class="min-h-[calc(100vh-6rem)] flex items-center py-16">
+            <div class="max-w-3xl">
+                <p class="text-accent text-lg font-medium mb-4">Hi, my name is</p>
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold text-gray-100 mb-4">
+                    Malinda Amarakoon.
+                </h1>
+                <h2 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-gray-400 mb-8">
+                    I build things for the web.
+                </h2>
+                <p class="text-lg text-gray-400 max-w-xl mb-8">
+                    I'm a third-year student at <span class="text-accent">Coventry University</span>, specializing in software development. I'm passionate about creating intuitive, accessible, and high-performance digital experiences.
+                </p>
+                <div class="flex items-center space-x-4">
+                    <a href="#contact" class="bg-accent text-gray-900 font-medium py-3 px-6 rounded-md hover:bg-opacity-80 transition-all duration-300">
+                        Get In Touch
+                    </a>
+                    <div class="flex space-x-4">
+                        <!-- GitHub Icon -->
+                        <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-accent transition-colors duration-200" aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        </a>
+                        <!-- LinkedIn Icon -->
+                        <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-accent transition-colors duration-200" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="section">
-            <div class="container card">
-                <h2>Skills</h2>
-                <ul>
-                    <li><strong>Programming:</strong> Python, Java, C#, C++, C</li>
-                    <li><strong>Web Development:</strong> HTML, CSS, JavaScript, PHP</li>
-                    <li><strong>Databases:</strong> MongoDB, SQLite, Oracle, MySQL</li>
-                    <li><strong>Robotics:</strong> Arduino, Microcontrollers</li>
-                </ul>
+        <!-- Section 2: About Me -->
+        <section id="about" class="py-16 sm:py-24">
+            <h2 class="text-3xl font-bold text-gray-100 mb-8 flex items-center">
+                <span class="text-accent font-medium text-2xl mr-3">01.</span>
+                About Me
+                <span class="h-px bg-gray-700 flex-grow ml-6"></span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-10">
+                <div class="md:col-span-3 text-gray-400 text-lg space-y-4">
+                    <p>
+                        Hello! I'm Malinda, a third-year student at Coventry University with a strong passion for software engineering and web development. My journey in tech started with a fascination for how websites worked, and it has grown into a full-fledged pursuit of building elegant and functional applications.
+                    </p>
+                    <p>
+                        Throughout my studies, I've gained hands-on experience with various technologies and methodologies. I enjoy tackling complex problems and turning ideas into reality, whether it's building a full-stack application or optimizing front-end performance.
+                    </p>
+                    <p>
+                        Here are a few technologies I've been working with recently:
+                    </p>
+                    <ul class="grid grid-cols-2 gap-2 text-gray-300">
+                        <li class="flex items-center">
+                            <span class="text-accent mr-2">▹</span>JavaScript (ES6+)
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-accent mr-2">▹</span>React
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-accent mr-2">▹</span>Node.js
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-accent mr-2">▹</span>Python
+                        </li>
+                         <li class="flex items-center">
+                            <span class="text-accent mr-2">▹</span>Java
+                        </li>
+                        <li class="flex items-center">
+                            <span class="text-accent mr-2">▹</span>SQL & NoSQL (MongoDB)
+                        </li>
+                    </ul>
+                </div>
+                <div class="md:col-span-2 flex justify-center items-start">
+                    <div class="w-64 h-64 sm:w-80 sm:h-80 relative group">
+                        <div class="absolute inset-0 bg-accent rounded-lg transform transition-transform duration-300 group-hover:translate-x-2 group-hover:translate-y-2"></div>
+                        <img 
+                            src="https://placehold.co/400x400/112240/ccd6f6?text=Malinda" 
+                            alt="Malinda Amarakoon" 
+                            class="relative w-full h-full object-cover rounded-lg shadow-lg"
+                            onerror="this.src='https://placehold.co/400x400/112240/ccd6f6?text=Profile+Photo'; this.onerror=null;"
+                        >
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="section">
-            <div class="container card">
-                <h2>Contact Me</h2>
-                <p>Email: <a href="mailto:greshanamarakoon@gmail.com">greshanamarakoon@gmail.com</a></p>
-                <p>LinkedIn: <a href="https://linkedin.com/in/malindaamarakoon" target="_blank">Malinda Amarakoon</a></p>
-                <p>GitHub: <a href="https://github.com/Malinda01" target="_blank">Malinda01</a></p>
+        <!-- Section 3: Projects -->
+        <section id="projects" class="py-16 sm:py-24">
+            <h2 class="text-3xl font-bold text-gray-100 mb-8 flex items-center">
+                <span class="text-accent font-medium text-2xl mr-3">02.</span>
+                Some Things I've Built
+                <span class="h-px bg-gray-700 flex-grow ml-6"></span>
+            </h2>
+
+            <!-- Project Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Project Card 1 -->
+                <div class="bg-card rounded-lg shadow-xl p-6 flex flex-col justify-between hover-lift">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <!-- Folder Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                            <div class="flex space-x-3">
+                                <a href="#" class="text-gray-400 hover:text-accent" aria-label="GitHub Link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-accent" aria-label="External Link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-100 hover:text-accent mb-3 transition-colors duration-200 cursor-pointer">Project Title One</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            A brief description of the project. What problem does it solve? What was your role? Keep it concise and impactful.
+                        </p>
+                    </div>
+                    <footer class="flex flex-wrap text-xs text-gray-500 font-medium">
+                        <span class="mr-3 mb-1">React</span>
+                        <span class="mr-3 mb-1">Tailwind CSS</span>
+                        <span class="mr-3 mb-1">Node.js</span>
+                    </footer>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="bg-card rounded-lg shadow-xl p-6 flex flex-col justify-between hover-lift">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                            <div class="flex space-x-3">
+                                <a href="#" class="text-gray-400 hover:text-accent" aria-label="GitHub Link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-100 hover:text-accent mb-3 transition-colors duration-200 cursor-pointer">Project Title Two</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            This one could be a university project or a personal exploration. Talk about the technologies used and what you learned.
+                        </p>
+                    </div>
+                    <footer class="flex flex-wrap text-xs text-gray-500 font-medium">
+                        <span class="mr-3 mb-1">Python</span>
+                        <span class="mr-3 mb-1">Flask</span>
+                        <span class="mr-3 mb-1">SQLAlchemy</span>
+                    </footer>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="bg-card rounded-lg shadow-xl p-6 flex flex-col justify-between hover-lift">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                            <div class="flex space-x-3">
+                                <a href="#" class="text-gray-400 hover:text-accent" aria-label="GitHub Link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-accent" aria-label="External Link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-100 hover:text-accent mb-3 transition-colors duration-200 cursor-pointer">Project Title Three</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            A final project to show your range. Maybe it's a mobile app, a data science project, or something else you're proud of.
+                        </p>
+                    </div>
+                    <footer class="flex flex-wrap text-xs text-gray-500 font-medium">
+                        <span class="mr-3 mb-1">Java</span>
+                        <span class="mr-3 mb-1">Spring Boot</span>
+                        <span class="mr-3 mb-1">Docker</span>
+                    </footer>
+                </div>
+
             </div>
         </section>
 
-        
-        <!-- Contact Section -->
-        <section id="contact" class="section">
-            <div class="container card">
-                <p>
-                    <a href="https://drive.google.com/file/d/1gYGfZPbiHFTKAXsc_5P0zSb6xNOkF1wJ/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                        Download My CV
-                    </a>
-                </p>
-            </div>
+        <!-- Section 4: Contact -->
+        <section id="contact" class="py-16 sm:py-24 text-center max-w-xl mx-auto">
+            <h2 class="text-accent font-medium text-lg mb-3">03. What's Next?</h2>
+            <h3 class="text-4xl font-bold text-gray-100 mb-6">Get In Touch</h3>
+            <p class="text-gray-400 mb-8">
+                I'm currently seeking internship opportunities and am always open to new challenges and collaborations. Whether you have a question or just want to say hi, my inbox is always open!
+            </p>
+            <a href="mailto:your-email@example.com" class="bg-accent text-gray-900 font-medium py-3 px-6 rounded-md hover:bg-opacity-80 transition-all duration-300">
+                Say Hello
+            </a>
         </section>
 
-        
     </main>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>© 2025 Malinda's Portfolio. All rights reserved.</p>
+    <footer class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+             <!-- Social links for footer -->
+            <div class="flex space-x-4 md:hidden">
+                <!-- GitHub Icon -->
+                <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-accent transition-colors duration-200" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+                <!-- LinkedIn Icon -->
+                <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-accent transition-colors duration-200" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+            </div>
+            <p class="text-gray-500 text-sm text-center">
+                © 2025 Malinda Amarakoon. All rights reserved.
+            </p>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="scripts/script.js"></script>
+
+    <!-- Smooth Scroll JavaScript -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // We account for the fixed header height (64px or 4rem)
+                    const headerOffset = 64; 
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
