@@ -539,8 +539,8 @@
   <p class="hero-sub">A little surprise for</p>
   <h1 class="hero-title">My <em>Love</em></h1>
   <p class="hero-desc">
-    I wrapped up a few little things that made me think of you —<br/>
-    but there's one more hiding at the bottom&hellip;
+    I put together something special,<br/>
+    just for you, just for this moment&hellip;
   </p>
   <div class="scroll-cue" onclick="document.getElementById('letter').scrollIntoView({behavior:'smooth'})">
     <span>Open it</span>
@@ -558,7 +558,7 @@
     <div class="letter-body">
       <p>Every single day, you make ordinary moments feel like the most beautiful things I've ever lived. Your laugh, the way you look at me, the warmth you carry — I fall for it all, over and over again.</p>
       <p>I didn't need a grand occasion or a perfect speech. I just needed you, and this moment — because loving you has always felt that simple, and that extraordinary.</p>
-      <p>In this little box I put a few things that reminded me of you. But there's one thing hidden inside that carries everything I couldn't fit into words.</p>
+      <p>In this little box I put a few things that reminded me of you. Open it slowly, my love.</p>
       <p>Go find it.</p>
     </div>
     <div class="letter-sign">
@@ -571,20 +571,18 @@
 <!-- ── REVEAL ── -->
 <section id="reveal" class="page">
 
+  <h2 class="section-title" style="margin-bottom:0.6rem;">Are you ready to uncover <em>the mystery?</em></h2>
+  <p class="tap-hint" id="tapHint" style="margin-bottom:2rem;">tap the box to reveal</p>
+
   <div class="box-visual" id="giftBox" onclick="openBox()">
     <div class="box-body"></div>
     <div class="box-lid"></div>
     <div class="box-wrap"></div>
   </div>
-  <p class="tap-hint" id="tapHint">tap the box</p>
 
   <div id="ring-reveal">
-    <span class="ring-emoji">💍</span>
-    <h2 class="reveal-title"><em>Will you</em> be mine, always?</h2>
-    <p class="reveal-text">
-      This ring is a promise — to love you through every season, to choose you in every ordinary and extraordinary moment, and to keep making you feel like the most loved person in the world.
-    </p>
-    <button class="yes-btn" id="yesBtn" onclick="celebrate()">Yes, always ♡</button>
+    <h2 class="reveal-title" style="margin-bottom:1.6rem;">You ready to <em>open the box?</em></h2>
+    <button class="yes-btn" id="yesBtn" onclick="celebrate()">YES I OPENED 🎉</button>
   </div>
 </section>
 
@@ -650,6 +648,7 @@
     opened = true;
     document.getElementById('giftBox').classList.add('open');
     document.getElementById('tapHint').style.display = 'none';
+    document.querySelector('#reveal .section-title').style.display = 'none';
     setTimeout(() => {
       const r = document.getElementById('ring-reveal');
       r.style.display = 'block';
@@ -659,47 +658,61 @@
     }, 700);
   }
 
-  /* ── Confetti ── */
+  /* ── Sprinkles ── */
   function celebrate() {
     const canvas = document.getElementById('confetti-canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const colors = ['#c8607a','#f5d6de','#c4933f','#f9e4e9','#e8a0b0','#fdf0f3','#d4849a'];
-    const pieces = Array.from({length:160}, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height - canvas.height,
-      w: 6 + Math.random() * 10,
-      h: 4 + Math.random() * 7,
-      color: colors[Math.floor(Math.random()*colors.length)],
-      rot: Math.random() * Math.PI * 2,
-      vx: (Math.random()-0.5) * 3,
-      vy: 2 + Math.random() * 4,
-      vr: (Math.random()-0.5) * 0.15,
-    }));
+    const btn = document.getElementById('yesBtn');
+    btn.textContent = '✦ So happy for you! ✦';
+    btn.style.background = '#c4933f';
+    btn.disabled = true;
+
+    const emojis = ['💍','🌸','💖','✨','🌷','💕','🎀','🌺'];
+    const sprinkles = Array.from({length: 160}, () => {
+      const angle = Math.random() * Math.PI * 2;
+      const speed = 14 + Math.random() * 22;
+      return {
+        x: canvas.width / 2,
+        y: canvas.height / 2,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed - 10,
+        gravity: 0.55,
+        emoji: emojis[Math.floor(Math.random() * emojis.length)],
+        size: 18 + Math.random() * 24,
+        alpha: 1,
+        rot: Math.random() * Math.PI * 2,
+        vr: (Math.random() - 0.5) * 0.18,
+      };
+    });
 
     let frame = 0;
     function draw() {
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      pieces.forEach(p => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      sprinkles.forEach(p => {
+        p.vx *= 0.97;
+        p.vy += p.gravity;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rot += p.vr;
+        p.alpha = Math.max(0, 1 - frame / 110);
         ctx.save();
+        ctx.globalAlpha = p.alpha;
+        ctx.font = `${p.size}px serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
         ctx.translate(p.x, p.y);
         ctx.rotate(p.rot);
-        ctx.fillStyle = p.color;
-        ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+        ctx.fillText(p.emoji, 0, 0);
         ctx.restore();
-        p.x += p.vx; p.y += p.vy; p.rot += p.vr;
-        if (p.y > canvas.height) { p.y = -20; p.x = Math.random()*canvas.width; }
       });
       frame++;
-      if (frame < 280) requestAnimationFrame(draw);
-      else ctx.clearRect(0,0,canvas.width,canvas.height);
+      if (frame < 130) requestAnimationFrame(draw);
+      else ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
     draw();
-
-    document.getElementById('yesBtn').textContent = '✦ Always & forever ✦';
-    document.getElementById('yesBtn').style.background = '#c4933f';
   }
 </script>
 </body>
