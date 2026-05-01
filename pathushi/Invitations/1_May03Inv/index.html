@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Date Invitation for Pathushi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* =========================================
+           Base Reset & Styling
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+            min-height: 100vh;
+            overflow: hidden; /* Keeps hearts and runaway button inside view */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* =========================================
+           Glassmorphism Main Card
+           ========================================= */
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(15px);
+            padding: 50px 40px;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            max-width: 450px;
+            width: 90%;
+            z-index: 10;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        h1 {
+            color: #2b2d42;
+            margin-bottom: 10px;
+            font-size: 2.2em;
+            font-weight: 700;
+        }
+
+        p.subtitle {
+            color: #4a4e69;
+            margin-bottom: 35px;
+            font-size: 1.1em;
+            font-weight: 400;
+        }
+
+        /* =========================================
+           Timeline UI (Updated for Clickable Maps)
+           ========================================= */
+        .timeline {
+            text-align: left;
+            margin: 20px 0 40px 0;
+            border-left: 3px solid #ff758c;
+            padding-left: 20px;
+        }
+
+        .event {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .event:last-child {
+            margin-bottom: 0;
+        }
+
+        .event::before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: #ff758c;
+            border-radius: 50%;
+            left: -31px;
+            top: 4px;
+            box-shadow: 0 0 10px rgba(255, 117, 140, 0.6);
+        }
+
+        .time {
+            font-weight: 700;
+            color: #d90429;
+            font-size: 1.1em;
+            letter-spacing: 0.5px;
+        }
+
+        .location {
+            font-size: 1.25em;
+            color: #1d3557;
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        /* New Clickable Styling for Location Texts */
+        .clickable-location {
+            cursor: pointer;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            text-decoration-color: rgba(255, 117, 140, 0.5);
+            transition: color 0.3s ease;
+        }
+
+        .clickable-location:hover {
+            color: #ff758c;
+        }
+
+        .desc {
+            color: #457b9d;
+            font-size: 0.95em;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        /* =========================================
+           Interactive Response Buttons
+           ========================================= */
+        .buttons {
+            position: relative;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        button {
+            padding: 12px 35px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .yes-btn {
+            background: #ff758c;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 117, 140, 0.4);
+            z-index: 2;
+        }
+
+        .yes-btn:hover {
+            transform: scale(1.08);
+            background: #ff5271;
+            box-shadow: 0 6px 20px rgba(255, 117, 140, 0.6);
+        }
+
+        /* Runaway "No" Button Style */
+        .no-btn {
+            background: #ffffff;
+            color: #2b2d42;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative; /* JS switches this to fixed */
+            z-index: 100;
+            white-space: nowrap;
+        }
+
+        /* =========================================
+           Map Modal (Popup) Styling
+           ========================================= */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 200; /* Sit on top of everything */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Enable scrolling if needed */
+            background-color: rgba(0,0,0,0.8); /* Semi-transparent black overlay */
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            padding: 15px;
+            border: 1px solid #888;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+            transform: scale(0.7);
+            transition: transform 0.4s ease;
+        }
+
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+
+        #modalImage {
+            display: block;
+            max-width: 100%;
+            max-height: 80vh; /* Don't grow larger than 80% viewport height */
+            border-radius: 8px;
+            object-fit: contain; /* Maintain aspect ratio */
+        }
+
+        .close-modal {
+            color: #2b2d42;
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            font-size: 32px;
+            font-weight: bold;
+            cursor: pointer;
+            background: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .close-modal:hover {
+            background-color: #eee;
+        }
+
+        /* =========================================
+           Heart Animations
+           ========================================= */
+        .hearts-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Allow interaction through this layer */
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            font-size: 24px;
+            animation: floatUp 4s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .success-heart {
+            font-size: 5em;
+            animation: pulse 1s infinite;
+            margin-top: 20px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Container for floating hearts (active after 'Yes') -->
+    <div class="hearts-container" id="hearts-container"></div>
+
+    <!-- Main Invitation Card -->
+    <div class="container" id="invite-card">
+        <h1>Hey Pathushi,</h1>
+        <p class="subtitle">Clear your schedule for Sunday, May 3rd! ✨</p>
+        
+        <div class="timeline">
+            <!-- Event 1: Arcade -->
+            <div class="event">
+                <div class="time">10:00 AM</div>
+                <!-- Adding onclick to open the modal -->
+                <div class="location">
+                    <span class="clickable-location" onclick="openMapModal('arcade')">Arcade Independence Square</span>
+                </div>
+                <div class="desc">(Click the name to see the route!)</div>
+            </div>
+            <!-- Event 2: Caramel Pumpkin -->
+            <div class="event">
+                <div class="time">12:00 PM</div>
+                <!-- Adding onclick to open the modal -->
+                <div class="location">
+                    <span class="clickable-location" onclick="openMapModal('caramel')">Caramel Pumpkin</span>
+                </div>
+                <div class="desc">(Click the name to see the route!)</div>
+            </div>
+        </div>
+
+        <!-- Call to Action Buttons -->
+        <div class="buttons">
+            <button class="yes-btn" onclick="acceptDate()">I'd love to!</button>
+            <button class="no-btn" id="no-btn">I'm busy</button>
+        </div>
+    </div>
+
+    <!-- Map Modal (Popup Container) -->
+    <div id="mapModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeMapModal()">&times;</span>
+            <img id="modalImage" src="" alt="Map View">
+        </div>
+    </div>
+
+    <script>
+        // =========================================
+        // Configuration & Setup
+        // =========================================
+
+        // Map image file definitions. 
+        // IMPORTANT: Ensure your saved screenshots match these names.
+        const mapImages = {
+            'arcade': 'map_arcade.png',   // User screenshot image_0.png
+            'caramel': 'map_caramel.png'  // User screenshot image_1.png
+        };
+
+        const noBtn = document.getElementById('no-btn');
+        const modal = document.getElementById('mapModal');
+        const modalImg = document.getElementById('modalImage');
+
+        // =========================================
+        // Map Modal Functionality
+        // =========================================
+
+        function openMapModal(locationKey) {
+            const imagePath = mapImages[locationKey];
+            if (imagePath) {
+                modalImg.src = imagePath;
+                modal.classList.add('show');
+            } else {
+                console.error("Map image not defined for: " + locationKey);
+            }
+        }
+
+        function closeMapModal() {
+            modal.classList.remove('show');
+        }
+
+        // Close modal if the user clicks anywhere outside of the image box
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeMapModal();
+            }
+        }
+
+        // =========================================
+        // The "Runaway Button" Logic (Dev Joke)
+        // =========================================
+        const moveButton = () => {
+            // Get screen bounds to prevent button going off-screen
+            const maxX = window.innerWidth - noBtn.offsetWidth - 20;
+            const maxY = window.innerHeight - noBtn.offsetHeight - 20;
+            
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+            
+            // Re-position button absolutely on screen
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = `${randomX}px`;
+            noBtn.style.top = `${randomY}px`;
+        };
+
+        // Trigger evasion on hover (desktop) and touch start (mobile)
+        noBtn.addEventListener('mouseover', moveButton);
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault(); // Prevents the tap from registering as a regular click
+            moveButton();
+        });
+
+        // =========================================
+        // Success State (When 'Yes' is Clicked)
+        // =========================================
+        function acceptDate() {
+            const card = document.getElementById('invite-card');
+            
+            // Transform the card content with a success message
+            card.innerHTML = `
+                <h1 style="color: #d90429;">It's a Date! 🎉</h1>
+                <p class="subtitle" style="font-size: 1.2em; margin-top: 15px;">Can't wait for Sunday, May 3rd.</p>
+                <p class="desc">Get ready for an exciting date.</p>
+                <div class="success-heart">❤️</div>
+            `;
+            
+            // Trigger the romantic floating hearts animation
+            createHearts();
+        }
+
+        // Create random floating hearts
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            const heartsCount = 50; // Total number of hearts
+            
+            for(let i = 0; i < heartsCount; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart');
+                    heart.innerHTML = '❤️';
+                    
+                    // Randomize horizontal position, size, and animation duration
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                    heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    
+                    container.appendChild(heart);
+
+                    // Clean up DOM after animation finishes
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 5000);
+                }, i * 120); // Stagger the generation for a smooth cascade
+            }
+        }
+    </script>
+</body>
+</html>
