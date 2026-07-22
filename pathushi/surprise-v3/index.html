@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Special Day</title>
+    <!-- Importing romantic and cute fonts from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #faebeb;
+            --text-dark: #4a3831;
+            --accent-color: #d49a89;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: radial-gradient(#d49a89 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+            font-family: 'Quicksand', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            padding: 50px 20px 20px;
+        }
+
+        header h1 {
+            font-family: 'Caveat', cursive;
+            font-size: 3.5rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .memory-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .memory-section:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .text-content {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .text-content h2 {
+            font-family: 'Caveat', cursive;
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .text-content p {
+            font-size: 1.1rem;
+        }
+
+        /* Polaroid Image Styling */
+        .polaroid-wrapper {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .polaroid {
+            background: var(--white);
+            padding: 15px 15px 50px 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+            max-width: 280px;
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 1px solid #eee;
+        }
+
+        .polaroid:hover {
+            transform: scale(1.05) rotate(0deg) !important;
+            z-index: 10;
+        }
+
+        /* Slight rotations for the photos to look like a scrapbook */
+        .rot-left { transform: rotate(-4deg); }
+        .rot-right { transform: rotate(5deg); }
+        .rot-slight-left { transform: rotate(-2deg); }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: var(--text-dark);
+            color: var(--bg-color);
+            margin-top: 40px;
+        }
+
+        footer h3 {
+            font-family: 'Caveat', cursive;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+        
+        footer p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Heart animation */
+        .heart {
+            color: #ff6b6b;
+            display: inline-block;
+            animation: beat 1s infinite alternate;
+        }
+
+        @keyframes beat {
+            to { transform: scale(1.2); }
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            .memory-section { gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Today was the second most happiest day of my life <span class="heart">♥</span></h1>
+    </header>
+
+    <div class="container">
+        
+        <!-- Section 1: The Surprise -->
+        <div class="memory-section">
+            <div class="text-content">
+                <h2>The Best Surprise Ever!</h2>
+                <p>I couldn't believe it when you showed up to pick me up from the office today. Seeing your beautiful smile after a long day of work completely melted my heart. Thank you for always knowing exactly how to make my day better.</p>
+            </div>
+            <div class="polaroid-wrapper">
+                <div class="polaroid rot-left">
+                    <img src="WhatsApp Image 2026-07-22 at 7.13.39 PM.jpeg" alt="Us smiling in the taxi">
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Bing Chun Date -->
+        <div class="memory-section">
+            <div class="text-content">
+                <h2>Sweetness at Bing Chun</h2>
+                <p>Then we went to Bing Chun! The ice cream was amazing, but looking across the table at you was definitely the sweetest part of the evening. Sharing these little moments with you means the world to me.</p>
+            </div>
+            <div class="polaroid-wrapper">
+                <div class="polaroid rot-right">
+                    <img src="WhatsApp Image 2026-07-22 at 8.28.29 PM.jpg" alt="Enjoying ice cream">
+                </div>
+                <div class="polaroid rot-slight-left">
+                    <img src="WhatsApp Image 2026-07-22 at 7.13.41 PM.jpeg" alt="Bing Chun Ice Cream">
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: The Ride Home -->
+        <div class="memory-section">
+            <div class="text-content">
+                <h2>Heading Home Together</h2>
+                <p>Riding home together in the taxi, just being close to you, was the perfect way to end the day. Getting dropped off at home after spending time with my favorite person left me with the biggest smile on my face.</p>
+            </div>
+            <div class="polaroid-wrapper">
+                <div class="polaroid rot-left">
+                    <img src="WhatsApp Image 2026-07-22 at 7.13.39 PM (1).jpeg" alt="Sweet kiss in the taxi">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <h3>Why only the SECOND happiest day?</h3>
+        <p>Because I know our happiest days are still yet to come... <br><br>Thank you for making my day perfect.</p>
+    </footer>
+
+</body>
+</html>
