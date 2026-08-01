@@ -5,7 +5,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     initCanvasParticles();
     initCountdownTimer();
-    initEnvelopeSecret();
     initRSVPLogic();
 });
 
@@ -121,22 +120,7 @@ function initCountdownTimer() {
 }
 
 /* ==========================================================================
-   3. Secret Note Envelope Logic
-   ========================================================================== */
-function initEnvelopeSecret() {
-    const openBtn = document.getElementById('open-envelope-btn');
-    const msg = document.getElementById('envelope-message');
-
-    if (openBtn && msg) {
-        openBtn.addEventListener('click', () => {
-            msg.classList.toggle('hidden');
-            openBtn.textContent = msg.classList.contains('hidden') ? 'Read Note' : 'Close Note';
-        });
-    }
-}
-
-/* ==========================================================================
-   4. Interactive RSVP & Celebration Logic
+   3. Interactive RSVP & Celebration Logic
    ========================================================================== */
 function initRSVPLogic() {
     const yesBtn = document.getElementById('yes-btn');
