@@ -1,11 +1,10 @@
 /* ==========================================================================
-   Karaoke Date Invitation - Interactive Script
+   Karaoke Date Invitation - Interactive Script (TODAY 1.30-3.30 PM)
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
     initCanvasParticles();
     initCountdownTimer();
-    initPlaylistAndSynth();
     initEnvelopeSecret();
     initRSVPLogic();
 });
@@ -86,25 +85,16 @@ function initCanvasParticles() {
 }
 
 /* ==========================================================================
-   2. Countdown Timer Logic (Tomorrow @ 1:30 PM)
+   2. Countdown Timer Logic (TODAY @ 1:30 PM)
    ========================================================================== */
 function initCountdownTimer() {
     const hoursEl = document.getElementById('hours');
     const minutesEl = document.getElementById('minutes');
     const secondsEl = document.getElementById('seconds');
-    const ticketDateEl = document.getElementById('ticket-date-text');
 
-    // Calculate tomorrow's date at 13:30 (1:30 PM)
-    const now = new Date();
+    // Calculate Today's date at 13:30 (1:30 PM)
     const targetDate = new Date();
-    targetDate.setDate(now.getDate() + 1);
     targetDate.setHours(13, 30, 0, 0);
-
-    // Format date string for ticket display
-    const options = { weekday: 'short', month: 'short', day: 'numeric' };
-    if (ticketDateEl) {
-        ticketDateEl.textContent = targetDate.toLocaleDateString('en-US', options) + ' (Tomorrow)';
-    }
 
     function updateTimer() {
         const currentTime = new Date();
@@ -131,198 +121,7 @@ function initCountdownTimer() {
 }
 
 /* ==========================================================================
-   3. Song Database & Interactive Web Audio Synthesizer Player
-   ========================================================================== */
-
-const songData = {
-    sobana: {
-        title: 'Sobana (සොබනා)',
-        artist: 'Sinhala Classic Duet',
-        frequencies: [261.63, 329.63, 392.00, 523.25, 440.00, 349.23], // C, E, G, C5, A, F
-        lyrics: `
-            <p class="duet-line">🎤 [Duet Intro] Sobana kalhabasa ma hada dilena...</p>
-            <p class="girl-line">💕 [Her Turn] රන්වන් රන් මලක් වගේ ඔබ මා ළඟ ඉන්නවා නම්...</p>
-            <p class="boy-line">💙 [His Turn] මගේ පණ වාගේ ආදරෙන් මං ඔබව රැකබලා ගන්නම්!</p>
-            <p class="duet-line">✨ [Together] සොබනා සිනහවෙන් ලොවම එළිය වෙනවා!</p>
-        `
-    },
-    perfect: {
-        title: 'Perfect',
-        artist: 'Ed Sheeran',
-        frequencies: [329.63, 392.00, 440.00, 493.88, 523.25, 659.25], // E, G, A, B, C5, E5
-        lyrics: `
-            <p class="boy-line">💙 I found a love for me... Darling, just dive right in and follow my lead</p>
-            <p class="girl-line">💕 Well, I found a girl, beautiful and sweet...</p>
-            <p class="duet-line">✨ Baby, I'm dancing in the dark with you between my arms</p>
-            <p class="duet-line">💖 Barefoot on the grass, listening to our favourite song...</p>
-        `
-    },
-    lovestory: {
-        title: 'Love Story',
-        artist: 'Taylor Swift',
-        frequencies: [293.66, 369.99, 440.00, 554.37, 659.25], // D, F#, A, C#5, E5
-        lyrics: `
-            <p class="girl-line">💕 We were both young when I first saw you...</p>
-            <p class="boy-line">💙 See the lights, see the party, the ball gowns</p>
-            <p class="duet-line">✨ Romeo, take me somewhere we can be alone!</p>
-            <p class="duet-line">💖 I'll be waiting; all there's left to do is run!</p>
-        `
-    },
-    heenayaki: {
-        title: 'Heenayaki Mata Adare (හීනයකි මට ආදරේ)',
-        artist: 'Sinhala Romantic Hit',
-        frequencies: [220.00, 261.63, 329.63, 392.00, 440.00], // A, C, E, G, A4
-        lyrics: `
-            <p class="duet-line">🎤 හීනයකි මට ආදරේ... ඔබ ලඟ නැති හැම මොහොතේම...</p>
-            <p class="girl-line">💕 ඔබේ සුවඳ මා හදවත රැඳුණා...</p>
-            <p class="boy-line">💙 හැමදාම මගේ ළඟින් ඉන්න සුදූ!</p>
-            <p class="duet-line">✨ [Duet Highlight] Cove Kafe එකේදී එකටම කියමු!</p>
-        `
-    },
-    wmyb: {
-        title: 'What Makes You Beautiful',
-        artist: 'One Direction',
-        frequencies: [349.23, 440.00, 523.25, 698.46, 523.25, 440.00], // F, A, C5, F5
-        lyrics: `
-            <p class="boy-line">💙 You're insecure, don't know what for... You're turning heads when you walk through the door!</p>
-            <p class="girl-line">💕 Don't need make-up to cover up... Being the way that you are is enough!</p>
-            <p class="duet-line">✨ Baby you light up my world like nobody else!</p>
-            <p class="duet-line">💖 That's what makes you beautiful!</p>
-        `
-    },
-    unmadini: {
-        title: 'Unmadini (උන්මාදිනී)',
-        artist: 'Classic Soul',
-        frequencies: [261.63, 293.66, 329.63, 349.23, 392.00], // C, D, E, F, G
-        lyrics: `
-            <p class="boy-line">💙 උන්මාදිනී මාගේ... පෙම් මාවතේ...</p>
-            <p class="girl-line">💕 මා හද නවාතැනේ ඔබමයි හිඳින්නේ...</p>
-            <p class="duet-line">✨ නිහඬව තබන්න බැරි සෙනෙහසේ ගීතය සින්දු කියමු හෙට!</p>
-        `
-    },
-    more: {
-        title: 'And Lot Moreeeeee! 🎶✨',
-        artist: 'Unlimited Playlist Queue',
-        frequencies: [261.63, 329.63, 392.00, 440.00, 523.25, 659.25, 783.99],
-        lyrics: `
-            <p class="duet-line">🎉 Any song you request tomorrow, we will sing!</p>
-            <p class="girl-line">💕 Your favorites, my favorites & secret duets!</p>
-            <p class="boy-line">💙 Non-stop music from 1.30 PM to 3.30 PM!</p>
-        `
-    }
-};
-
-let audioCtx = null;
-let currentSynthInterval = null;
-let isPlaying = false;
-let activeSongKey = 'sobana';
-
-function initPlaylistAndSynth() {
-    const playBtn = document.getElementById('synth-play-btn');
-    const playIcon = document.getElementById('play-icon');
-    const eqBars = document.getElementById('eq-bars');
-    const vinyl = document.querySelector('.spinning-vinyl');
-    const lyricsToggle = document.getElementById('lyrics-toggle');
-    const lyricsDrawer = document.getElementById('lyrics-drawer');
-
-    // Select initial default song
-    selectSong('sobana');
-
-    playBtn.addEventListener('click', () => {
-        if (isPlaying) {
-            stopSynthTune();
-        } else {
-            startSynthTune(activeSongKey);
-        }
-    });
-
-    lyricsToggle.addEventListener('click', () => {
-        lyricsDrawer.classList.toggle('open');
-    });
-}
-
-function selectSong(key) {
-    const song = songData[key];
-    if (!song) return;
-
-    activeSongKey = key;
-
-    document.getElementById('current-song-title').textContent = song.title;
-    document.getElementById('current-song-artist').textContent = song.artist;
-    document.getElementById('lyrics-content').innerHTML = song.lyrics;
-
-    // Highlight active card
-    document.querySelectorAll('.song-card').forEach(card => {
-        card.style.borderColor = 'rgba(255, 255, 255, 0.12)';
-    });
-    const activeCard = document.querySelector(`.song-card[data-song="${key}"]`);
-    if (activeCard) {
-        activeCard.style.borderColor = '#ff2a75';
-    }
-
-    // Auto play synth preview
-    startSynthTune(key);
-}
-
-function startSynthTune(key) {
-    stopSynthTune();
-
-    if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    }
-
-    if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-    }
-
-    const song = songData[key];
-    const freqs = song.frequencies;
-    let noteIdx = 0;
-
-    isPlaying = true;
-    document.getElementById('play-icon').className = 'fa-solid fa-pause';
-    document.getElementById('eq-bars').classList.add('active');
-    document.querySelector('.spinning-vinyl').classList.add('playing');
-
-    currentSynthInterval = setInterval(() => {
-        if (!isPlaying) return;
-
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-
-        osc.type = 'triangle';
-        osc.frequency.value = freqs[noteIdx % freqs.length];
-
-        gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.4);
-
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.4);
-
-        noteIdx++;
-    }, 280);
-}
-
-function stopSynthTune() {
-    isPlaying = false;
-    if (currentSynthInterval) {
-        clearInterval(currentSynthInterval);
-        currentSynthInterval = null;
-    }
-    const playIcon = document.getElementById('play-icon');
-    const eqBars = document.getElementById('eq-bars');
-    const vinyl = document.querySelector('.spinning-vinyl');
-
-    if (playIcon) playIcon.className = 'fa-solid fa-play';
-    if (eqBars) eqBars.classList.remove('active');
-    if (vinyl) vinyl.classList.remove('playing');
-}
-
-/* ==========================================================================
-   4. Secret Note Envelope Logic
+   3. Secret Note Envelope Logic
    ========================================================================== */
 function initEnvelopeSecret() {
     const openBtn = document.getElementById('open-envelope-btn');
@@ -337,7 +136,7 @@ function initEnvelopeSecret() {
 }
 
 /* ==========================================================================
-   5. Interactive RSVP & Celebration Logic
+   4. Interactive RSVP & Celebration Logic
    ========================================================================== */
 function initRSVPLogic() {
     const yesBtn = document.getElementById('yes-btn');
@@ -351,7 +150,7 @@ function initRSVPLogic() {
         "Are you sure? Unlimited coffee & tea included! ☕",
         "Nice try! The 'No' button is camera shy 🙈",
         "Your duet partner will be sad! 🥺",
-        "Click YES instead! You're going to love it! 💕",
+        "Click YES instead! You're going to love today! 💕",
         "Warning: Saying no voids your karaoke privileges! 😂"
     ];
 
@@ -380,7 +179,6 @@ function initRSVPLogic() {
     yesBtn.addEventListener('click', () => {
         modal.classList.add('active');
         triggerConfetti();
-        playSuccessTone();
     });
 
     modalClose.addEventListener('click', () => {
@@ -395,31 +193,10 @@ function initRSVPLogic() {
 
     if (calendarBtn) {
         calendarBtn.addEventListener('click', () => {
-            alert("✨ Reminder set for Tomorrow at 1:30 PM @ Cove Kafe Kirulapana! See you there! 🎤❤️");
+            alert("✨ Reminder set for TODAY at 1:30 PM @ Cove Kafe Kirulapana! See you there! 🎤❤️");
+            modal.classList.remove('active');
         });
     }
-}
-
-/* Synthesizer Fanfare when RSVP Yes is clicked */
-function playSuccessTone() {
-    if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    }
-    const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
-    notes.forEach((freq, idx) => {
-        setTimeout(() => {
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-            osc.type = 'sine';
-            osc.frequency.value = freq;
-            gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.5);
-            osc.connect(gain);
-            gain.connect(audioCtx.destination);
-            osc.start();
-            osc.stop(audioCtx.currentTime + 0.5);
-        }, idx * 120);
-    });
 }
 
 /* Confetti Burst Animation */

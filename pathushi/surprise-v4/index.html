@@ -18,14 +18,14 @@
 
     <!-- Main Wrapper -->
     <div class="app-container">
-        <!-- Floating Music Player Bar / Header Bar -->
+        <!-- Header Bar -->
         <header class="navbar">
             <div class="logo">
                 <i class="fa-solid fa-microphone-lines glow-icon"></i>
-                <span>Karaoke Date </span>
+                <span>Karaoke Date</span>
             </div>
             <div class="header-status">
-                <span class="pulse-dot"></span> Tomorrow @ 1:30 PM
+                <span class="pulse-dot"></span> TODAY @ 1:30 PM
             </div>
         </header>
 
@@ -36,7 +36,7 @@
             </div>
             <h1 class="hero-title">
                 We're Going On A <br>
-                <span class="gradient-text">Karaoke Date!</span> 🎤✨
+                <span class="gradient-text">Karaoke Date TODAY!</span> 🎤✨
             </h1>
             <p class="hero-subtitle">
                 Get ready for an afternoon filled with our favorite songs, cozy coffee, warm smiles, and unforgettable duets at Cove Kafe!
@@ -45,7 +45,7 @@
             <!-- Countdown Timer Card -->
             <div class="countdown-card glass-panel">
                 <div class="countdown-title">
-                    <i class="fa-regular fa-clock"></i> Countdown to Our Date
+                    <i class="fa-regular fa-clock"></i> Countdown to Our Date Today
                 </div>
                 <div class="timer-grid">
                     <div class="timer-box">
@@ -63,7 +63,7 @@
                         <label>Secs</label>
                     </div>
                 </div>
-                <div class="countdown-target">Target: Tomorrow | 1:30 PM - 3:30 PM</div>
+                <div class="countdown-target">Target: TODAY | 1:30 PM - 3:30 PM</div>
             </div>
 
             <div class="hero-actions">
@@ -71,7 +71,7 @@
                     <i class="fa-solid fa-heart-circle-check"></i> RSVP Now
                 </a>
                 <a href="#playlist" class="btn btn-secondary">
-                    <i class="fa-solid fa-music"></i> View Song List
+                    <i class="fa-solid fa-music"></i> View Song Lineup
                 </a>
             </div>
         </section>
@@ -99,7 +99,7 @@
                                 <i class="fa-solid fa-calendar-day"></i>
                                 <div>
                                     <strong>Date</strong>
-                                    <span id="ticket-date-text">Tomorrow</span>
+                                    <span>TODAY</span>
                                 </div>
                             </div>
                             <div class="detail-item">
@@ -126,7 +126,7 @@
                     <div class="ticket-right">
                         <div class="barcode-area">
                             <i class="fa-solid fa-qrcode qr-icon"></i>
-                            <span class="pass-code">PASS: DUET-2026</span>
+                            <span class="pass-code">PASS: DUET-TODAY</span>
                             <div class="vip-seal">PASS APPROVED</div>
                         </div>
                     </div>
@@ -134,60 +134,19 @@
             </div>
         </section>
 
-        <!-- Playlist Section -->
+        <!-- Playlist Section (Clean Cards Only) -->
         <section id="playlist" class="section-container">
             <div class="section-header">
-                <span class="sub-heading">Setlist For Tomorrow</span>
+                <span class="sub-heading">Setlist For Today</span>
                 <h2>Our Song Lineup 🎵</h2>
-                <p>Here are the songs we are singing together (and plenty more!)</p>
-            </div>
-
-            <!-- Mini Interactive Synthesizer Player Banner -->
-            <div class="interactive-player-card glass-panel">
-                <div class="now-playing-info">
-                    <div class="album-art" id="current-album-art">
-                        <i class="fa-solid fa-record-vinyl spinning-vinyl"></i>
-                    </div>
-                    <div class="song-meta">
-                        <span class="now-playing-tag">CLICK ANY SONG TO TEST PLAY 🎧</span>
-                        <h3 id="current-song-title">Select a Song Below</h3>
-                        <p id="current-song-artist">Sing-along & Preview Mode</p>
-                    </div>
-                </div>
-
-                <div class="audio-controls">
-                    <button class="control-btn" id="synth-play-btn">
-                        <i class="fa-solid fa-play" id="play-icon"></i>
-                    </button>
-                    <div class="equalizer-bars" id="eq-bars">
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                    </div>
-                    <button class="lyrics-toggle-btn" id="lyrics-toggle">
-                        <i class="fa-solid fa-align-left"></i> Lyrics Preview
-                    </button>
-                </div>
-
-                <!-- Lyrics Drawer Container -->
-                <div class="lyrics-drawer" id="lyrics-drawer">
-                    <div class="lyrics-header">
-                        <span><i class="fa-solid fa-microphone"></i> Sing-Along Lyrics</span>
-                        <span class="duet-indicator">Pink = Girl | Blue = Boy | Gold = Duet</span>
-                    </div>
-                    <div class="lyrics-content" id="lyrics-content">
-                        Click a track from the playlist to load lyrics!
-                    </div>
-                </div>
+                <p>The songs we are singing together at Cove Kafe today!</p>
             </div>
 
             <!-- Songs Grid -->
             <div class="songs-grid">
 
                 <!-- Song 1: Sobana -->
-                <div class="song-card glass-panel" data-song="sobana">
+                <div class="song-card glass-panel">
                     <div class="song-badge sinhala-badge">Sinhala Hit</div>
                     <div class="song-icon"><i class="fa-solid fa-guitar"></i></div>
                     <div class="song-info">
@@ -195,27 +154,21 @@
                         <p class="artist">Baila & Romantic Sinhala Classic</p>
                         <span class="vibe"><i class="fa-solid fa-heart"></i> High energy duet vibe</span>
                     </div>
-                    <button class="song-play-btn" onclick="selectSong('sobana')">
-                        <i class="fa-solid fa-play"></i> Play Tune
-                    </button>
                 </div>
 
                 <!-- Song 2: Perfect - Ed Sheeran -->
-                <div class="song-card glass-panel" data-song="perfect">
+                <div class="song-card glass-panel">
                     <div class="song-badge english-badge">Romantic Favorite</div>
                     <div class="song-icon"><i class="fa-solid fa-music"></i></div>
                     <div class="song-info">
                         <h3>Perfect</h3>
                         <p class="artist">Ed Sheeran</p>
-                        <span class="vibe"><i class="fa-solid fa-heart"></i> Slow romantic slow-dance song</span>
+                        <span class="vibe"><i class="fa-solid fa-heart"></i> Slow romantic dance song</span>
                     </div>
-                    <button class="song-play-btn" onclick="selectSong('perfect')">
-                        <i class="fa-solid fa-play"></i> Play Tune
-                    </button>
                 </div>
 
                 <!-- Song 3: Love Story - Taylor Swift -->
-                <div class="song-card glass-panel" data-song="lovestory">
+                <div class="song-card glass-panel">
                     <div class="song-badge swiftie-badge">Swiftie Special</div>
                     <div class="song-icon"><i class="fa-solid fa-crown"></i></div>
                     <div class="song-info">
@@ -223,13 +176,10 @@
                         <p class="artist">Taylor Swift</p>
                         <span class="vibe"><i class="fa-solid fa-heart"></i> Epic chorus duet moment</span>
                     </div>
-                    <button class="song-play-btn" onclick="selectSong('lovestory')">
-                        <i class="fa-solid fa-play"></i> Play Tune
-                    </button>
                 </div>
 
                 <!-- Song 4: Heenayaki Mata Adare -->
-                <div class="song-card glass-panel" data-song="heenayaki">
+                <div class="song-card glass-panel">
                     <div class="song-badge sinhala-badge">Sweet Melody</div>
                     <div class="song-icon"><i class="fa-solid fa-cloud-moon"></i></div>
                     <div class="song-info">
@@ -237,13 +187,10 @@
                         <p class="artist">Romantic Sinhala Love Song</p>
                         <span class="vibe"><i class="fa-solid fa-heart"></i> Sweet emotional harmony</span>
                     </div>
-                    <button class="song-play-btn" onclick="selectSong('heenayaki')">
-                        <i class="fa-solid fa-play"></i> Play Tune
-                    </button>
                 </div>
 
                 <!-- Song 5: What Makes You Beautiful -->
-                <div class="song-card glass-panel" data-song="wmyb">
+                <div class="song-card glass-panel">
                     <div class="song-badge pop-badge">Pop Energy</div>
                     <div class="song-icon"><i class="fa-solid fa-bolt"></i></div>
                     <div class="song-info">
@@ -251,13 +198,10 @@
                         <p class="artist">One Direction</p>
                         <span class="vibe"><i class="fa-solid fa-heart"></i> Hype song to sing to you!</span>
                     </div>
-                    <button class="song-play-btn" onclick="selectSong('wmyb')">
-                        <i class="fa-solid fa-play"></i> Play Tune
-                    </button>
                 </div>
 
                 <!-- Song 6: Unmadini -->
-                <div class="song-card glass-panel" data-song="unmadini">
+                <div class="song-card glass-panel">
                     <div class="song-badge sinhala-badge">Timeless Soul</div>
                     <div class="song-icon"><i class="fa-solid fa-spa"></i></div>
                     <div class="song-info">
@@ -265,23 +209,17 @@
                         <p class="artist">Classic Soul</p>
                         <span class="vibe"><i class="fa-solid fa-heart"></i> Deep heartfelt lyrics</span>
                     </div>
-                    <button class="song-play-btn" onclick="selectSong('unmadini')">
-                        <i class="fa-solid fa-play"></i> Play Tune
-                    </button>
                 </div>
 
                 <!-- Song 7: And Lot More -->
-                <div class="song-card glass-panel mystery-card" data-song="more">
+                <div class="song-card glass-panel mystery-card">
                     <div class="song-badge surprise-badge">Surprise Tracks</div>
                     <div class="song-icon"><i class="fa-solid fa-icons"></i></div>
                     <div class="song-info">
                         <h3>And Lot Moreeeeee! 🎶✨</h3>
-                        <p class="artist">Unlimited Queue</p>
-                        <span class="vibe"><i class="fa-solid fa-compact-disc"></i> Requests allowed all afternoon!</span>
+                        <p class="artist">Unlimited Requests Queue</p>
+                        <span class="vibe"><i class="fa-solid fa-compact-disc"></i> All your favorite songs welcome!</span>
                     </div>
-                    <button class="song-play-btn" onclick="selectSong('more')">
-                        <i class="fa-solid fa-sparkles"></i> Surprise Me
-                    </button>
                 </div>
 
             </div>
@@ -304,7 +242,7 @@
                     </p>
                     <div class="location-info-list">
                         <div class="info-pill">
-                            <i class="fa-solid fa-clock"></i> 1:30 PM - 3:30 PM (Tomorrow)
+                            <i class="fa-solid fa-clock"></i> 1:30 PM - 3:30 PM (TODAY)
                         </div>
                         <div class="info-pill">
                             <i class="fa-solid fa-location-arrow"></i> Kirulapana, Colombo
@@ -322,7 +260,7 @@
             </div>
         </section>
 
-        <!-- Romantic Love Note Envelope Card -->
+        <!-- Secret Note Section -->
         <section class="section-container">
             <div class="envelope-wrapper">
                 <div class="envelope-card glass-panel" id="envelope-card">
@@ -334,7 +272,7 @@
                     <button class="btn btn-primary" id="open-envelope-btn">Read Note</button>
                     <div class="envelope-message hidden" id="envelope-message">
                         <p class="quote">
-                            "I don't care if we sing off-key, get the words wrong, or hit the highest notes—being with you is my favorite song. Can't wait for tomorrow afternoon!"
+                            "I don't care if we sing off-key, get the words wrong, or hit the highest notes—being with you is my favorite song. Can't wait for today at 1:30 PM!"
                         </p>
                         <span class="signature">- Yours Always ❤️</span>
                     </div>
@@ -348,8 +286,8 @@
                 <div class="heart-pulse-icon">
                     <i class="fa-solid fa-heart"></i>
                 </div>
-                <h2>Will You Be My Karaoke Date Tomorrow? 🎤💕</h2>
-                <p>Time: 1:30 PM - 3:30 PM | Venue: Cove Kafe Kirulapana</p>
+                <h2>Will You Be My Karaoke Date Today? 🎤💕</h2>
+                <p>Time: TODAY 1:30 PM - 3:30 PM | Venue: Cove Kafe Kirulapana</p>
 
                 <div class="rsvp-buttons">
                     <button class="btn btn-yes glow-btn" id="yes-btn">
@@ -365,7 +303,7 @@
 
         <!-- Footer -->
         <footer class="footer">
-            <p>Made with ❤️ for the most special girl | Karaoke Date at Cove Kafe ☕🎤</p>
+            <p>Made with ❤️ for the most special girl | Today's Karaoke Date at Cove Kafe ☕🎤</p>
         </footer>
 
     </div>
@@ -377,13 +315,13 @@
             <div class="modal-icon">
                 <i class="fa-solid fa-champagne-glasses"></i>
             </div>
-            <h2>IT'S A DATE! 🎉💖</h2>
-            <p class="modal-sub">I can't wait to sing all these songs with you tomorrow!</p>
+            <h2>IT'S A DATE TODAY! 🎉💖</h2>
+            <p class="modal-sub">I can't wait to sing all these songs with you today at 1:30 PM!</p>
             
             <div class="modal-summary">
                 <div class="sum-row">
                     <i class="fa-solid fa-calendar"></i>
-                    <span>Date: Tomorrow</span>
+                    <span>Date: TODAY</span>
                 </div>
                 <div class="sum-row">
                     <i class="fa-solid fa-clock"></i>
@@ -395,12 +333,8 @@
                 </div>
             </div>
 
-            <div class="modal-songs-preview">
-                <strong>Opening Track:</strong> <span id="opening-song">Sobana / Perfect 🎶</span>
-            </div>
-
             <button class="btn btn-primary glow-btn full-width" id="add-calendar-btn">
-                <i class="fa-solid fa-calendar-plus"></i> Add Reminder
+                <i class="fa-solid fa-heart"></i> See You at 1:30 PM! 💕
             </button>
         </div>
     </div>
