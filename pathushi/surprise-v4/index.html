@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karaoke Date Invitation 🎤💖 | Cove Kafe Kirulapana</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Pacifico&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Canvas for floating background hearts & sparkles -->
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- Main Wrapper -->
+    <div class="app-container">
+        <!-- Floating Music Player Bar / Header Bar -->
+        <header class="navbar">
+            <div class="logo">
+                <i class="fa-solid fa-microphone-lines glow-icon"></i>
+                <span>Karaoke Date </span>
+            </div>
+            <div class="header-status">
+                <span class="pulse-dot"></span> Tomorrow @ 1:30 PM
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-badge">
+                <i class="fa-solid fa-sparkles"></i> Special Invitation for My Love
+            </div>
+            <h1 class="hero-title">
+                We're Going On A <br>
+                <span class="gradient-text">Karaoke Date!</span> 🎤✨
+            </h1>
+            <p class="hero-subtitle">
+                Get ready for an afternoon filled with our favorite songs, cozy coffee, warm smiles, and unforgettable duets at Cove Kafe!
+            </p>
+
+            <!-- Countdown Timer Card -->
+            <div class="countdown-card glass-panel">
+                <div class="countdown-title">
+                    <i class="fa-regular fa-clock"></i> Countdown to Our Date
+                </div>
+                <div class="timer-grid">
+                    <div class="timer-box">
+                        <span id="hours">00</span>
+                        <label>Hours</label>
+                    </div>
+                    <div class="timer-colon">:</div>
+                    <div class="timer-box">
+                        <span id="minutes">00</span>
+                        <label>Mins</label>
+                    </div>
+                    <div class="timer-colon">:</div>
+                    <div class="timer-box">
+                        <span id="seconds">00</span>
+                        <label>Secs</label>
+                    </div>
+                </div>
+                <div class="countdown-target">Target: Tomorrow | 1:30 PM - 3:30 PM</div>
+            </div>
+
+            <div class="hero-actions">
+                <a href="#rsvp" class="btn btn-primary glow-btn">
+                    <i class="fa-solid fa-heart-circle-check"></i> RSVP Now
+                </a>
+                <a href="#playlist" class="btn btn-secondary">
+                    <i class="fa-solid fa-music"></i> View Song List
+                </a>
+            </div>
+        </section>
+
+        <!-- VIP Ticket Card Section -->
+        <section class="section-container">
+            <div class="section-header">
+                <span class="sub-heading">Official Entry Pass</span>
+                <h2>Your VIP Date Pass 🎫</h2>
+            </div>
+            <div class="ticket-wrapper">
+                <div class="vip-ticket glass-panel">
+                    <div class="ticket-left">
+                        <div class="ticket-tag">EXCLUSIVELY FOR YOU</div>
+                        <h3 class="ticket-title">Sing Your Heart Out 🎶</h3>
+                        <div class="ticket-details">
+                            <div class="detail-item">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <div>
+                                    <strong>Venue</strong>
+                                    <span>Cove Kafe, Kirulapana</span>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fa-solid fa-calendar-day"></i>
+                                <div>
+                                    <strong>Date</strong>
+                                    <span id="ticket-date-text">Tomorrow</span>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fa-solid fa-clock"></i>
+                                <div>
+                                    <strong>Time Slot</strong>
+                                    <span>1:30 PM – 3:30 PM</span>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fa-solid fa-mug-hot"></i>
+                                <div>
+                                    <strong>Includes</strong>
+                                    <span>Coffee, Karaoke & Unlimited Love</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ticket-divider">
+                        <div class="notch top"></div>
+                        <div class="dashed-line"></div>
+                        <div class="notch bottom"></div>
+                    </div>
+                    <div class="ticket-right">
+                        <div class="barcode-area">
+                            <i class="fa-solid fa-qrcode qr-icon"></i>
+                            <span class="pass-code">PASS: DUET-2026</span>
+                            <div class="vip-seal">PASS APPROVED</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Playlist Section -->
+        <section id="playlist" class="section-container">
+            <div class="section-header">
+                <span class="sub-heading">Setlist For Tomorrow</span>
+                <h2>Our Song Lineup 🎵</h2>
+                <p>Here are the songs we are singing together (and plenty more!)</p>
+            </div>
+
+            <!-- Mini Interactive Synthesizer Player Banner -->
+            <div class="interactive-player-card glass-panel">
+                <div class="now-playing-info">
+                    <div class="album-art" id="current-album-art">
+                        <i class="fa-solid fa-record-vinyl spinning-vinyl"></i>
+                    </div>
+                    <div class="song-meta">
+                        <span class="now-playing-tag">CLICK ANY SONG TO TEST PLAY 🎧</span>
+                        <h3 id="current-song-title">Select a Song Below</h3>
+                        <p id="current-song-artist">Sing-along & Preview Mode</p>
+                    </div>
+                </div>
+
+                <div class="audio-controls">
+                    <button class="control-btn" id="synth-play-btn">
+                        <i class="fa-solid fa-play" id="play-icon"></i>
+                    </button>
+                    <div class="equalizer-bars" id="eq-bars">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                    <button class="lyrics-toggle-btn" id="lyrics-toggle">
+                        <i class="fa-solid fa-align-left"></i> Lyrics Preview
+                    </button>
+                </div>
+
+                <!-- Lyrics Drawer Container -->
+                <div class="lyrics-drawer" id="lyrics-drawer">
+                    <div class="lyrics-header">
+                        <span><i class="fa-solid fa-microphone"></i> Sing-Along Lyrics</span>
+                        <span class="duet-indicator">Pink = Girl | Blue = Boy | Gold = Duet</span>
+                    </div>
+                    <div class="lyrics-content" id="lyrics-content">
+                        Click a track from the playlist to load lyrics!
+                    </div>
+                </div>
+            </div>
+
+            <!-- Songs Grid -->
+            <div class="songs-grid">
+
+                <!-- Song 1: Sobana -->
+                <div class="song-card glass-panel" data-song="sobana">
+                    <div class="song-badge sinhala-badge">Sinhala Hit</div>
+                    <div class="song-icon"><i class="fa-solid fa-guitar"></i></div>
+                    <div class="song-info">
+                        <h3>Sobana (සොබනා)</h3>
+                        <p class="artist">Baila & Romantic Sinhala Classic</p>
+                        <span class="vibe"><i class="fa-solid fa-heart"></i> High energy duet vibe</span>
+                    </div>
+                    <button class="song-play-btn" onclick="selectSong('sobana')">
+                        <i class="fa-solid fa-play"></i> Play Tune
+                    </button>
+                </div>
+
+                <!-- Song 2: Perfect - Ed Sheeran -->
+                <div class="song-card glass-panel" data-song="perfect">
+                    <div class="song-badge english-badge">Romantic Favorite</div>
+                    <div class="song-icon"><i class="fa-solid fa-music"></i></div>
+                    <div class="song-info">
+                        <h3>Perfect</h3>
+                        <p class="artist">Ed Sheeran</p>
+                        <span class="vibe"><i class="fa-solid fa-heart"></i> Slow romantic slow-dance song</span>
+                    </div>
+                    <button class="song-play-btn" onclick="selectSong('perfect')">
+                        <i class="fa-solid fa-play"></i> Play Tune
+                    </button>
+                </div>
+
+                <!-- Song 3: Love Story - Taylor Swift -->
+                <div class="song-card glass-panel" data-song="lovestory">
+                    <div class="song-badge swiftie-badge">Swiftie Special</div>
+                    <div class="song-icon"><i class="fa-solid fa-crown"></i></div>
+                    <div class="song-info">
+                        <h3>Love Story</h3>
+                        <p class="artist">Taylor Swift</p>
+                        <span class="vibe"><i class="fa-solid fa-heart"></i> Epic chorus duet moment</span>
+                    </div>
+                    <button class="song-play-btn" onclick="selectSong('lovestory')">
+                        <i class="fa-solid fa-play"></i> Play Tune
+                    </button>
+                </div>
+
+                <!-- Song 4: Heenayaki Mata Adare -->
+                <div class="song-card glass-panel" data-song="heenayaki">
+                    <div class="song-badge sinhala-badge">Sweet Melody</div>
+                    <div class="song-icon"><i class="fa-solid fa-cloud-moon"></i></div>
+                    <div class="song-info">
+                        <h3>Heenayaki Mata Adare (හීනයකි මට ආදරේ)</h3>
+                        <p class="artist">Romantic Sinhala Love Song</p>
+                        <span class="vibe"><i class="fa-solid fa-heart"></i> Sweet emotional harmony</span>
+                    </div>
+                    <button class="song-play-btn" onclick="selectSong('heenayaki')">
+                        <i class="fa-solid fa-play"></i> Play Tune
+                    </button>
+                </div>
+
+                <!-- Song 5: What Makes You Beautiful -->
+                <div class="song-card glass-panel" data-song="wmyb">
+                    <div class="song-badge pop-badge">Pop Energy</div>
+                    <div class="song-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <div class="song-info">
+                        <h3>What Makes You Beautiful</h3>
+                        <p class="artist">One Direction</p>
+                        <span class="vibe"><i class="fa-solid fa-heart"></i> Hype song to sing to you!</span>
+                    </div>
+                    <button class="song-play-btn" onclick="selectSong('wmyb')">
+                        <i class="fa-solid fa-play"></i> Play Tune
+                    </button>
+                </div>
+
+                <!-- Song 6: Unmadini -->
+                <div class="song-card glass-panel" data-song="unmadini">
+                    <div class="song-badge sinhala-badge">Timeless Soul</div>
+                    <div class="song-icon"><i class="fa-solid fa-spa"></i></div>
+                    <div class="song-info">
+                        <h3>Unmadini (උන්මාදිනී)</h3>
+                        <p class="artist">Classic Soul</p>
+                        <span class="vibe"><i class="fa-solid fa-heart"></i> Deep heartfelt lyrics</span>
+                    </div>
+                    <button class="song-play-btn" onclick="selectSong('unmadini')">
+                        <i class="fa-solid fa-play"></i> Play Tune
+                    </button>
+                </div>
+
+                <!-- Song 7: And Lot More -->
+                <div class="song-card glass-panel mystery-card" data-song="more">
+                    <div class="song-badge surprise-badge">Surprise Tracks</div>
+                    <div class="song-icon"><i class="fa-solid fa-icons"></i></div>
+                    <div class="song-info">
+                        <h3>And Lot Moreeeeee! 🎶✨</h3>
+                        <p class="artist">Unlimited Queue</p>
+                        <span class="vibe"><i class="fa-solid fa-compact-disc"></i> Requests allowed all afternoon!</span>
+                    </div>
+                    <button class="song-play-btn" onclick="selectSong('more')">
+                        <i class="fa-solid fa-sparkles"></i> Surprise Me
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Location & Café Vibe Section -->
+        <section class="section-container">
+            <div class="location-card glass-panel">
+                <div class="location-image">
+                    <img src="assets/cove_kafe.jpg" alt="Cove Kafe Kirulapana Vibe">
+                    <div class="img-overlay">
+                        <span class="cafe-tag"><i class="fa-solid fa-mug-hot"></i> Cove Kafe</span>
+                    </div>
+                </div>
+                <div class="location-content">
+                    <span class="sub-heading">The Destination</span>
+                    <h2>Cove Kafe - Kirulapana 📍</h2>
+                    <p>
+                        A warm, cozy spot with comfortable seating, great drinks, and the perfect ambiance for our private karaoke session.
+                    </p>
+                    <div class="location-info-list">
+                        <div class="info-pill">
+                            <i class="fa-solid fa-clock"></i> 1:30 PM - 3:30 PM (Tomorrow)
+                        </div>
+                        <div class="info-pill">
+                            <i class="fa-solid fa-location-arrow"></i> Kirulapana, Colombo
+                        </div>
+                        <div class="info-pill">
+                            <i class="fa-solid fa-microphone-stand"></i> Karaoke Mic Ready
+                        </div>
+                    </div>
+                    <div class="location-actions">
+                        <a href="https://maps.google.com/?q=Cove+Kafe+Kirulapana" target="_blank" class="btn btn-secondary">
+                            <i class="fa-solid fa-map-location-dot"></i> Open Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Romantic Love Note Envelope Card -->
+        <section class="section-container">
+            <div class="envelope-wrapper">
+                <div class="envelope-card glass-panel" id="envelope-card">
+                    <div class="envelope-icon">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                    </div>
+                    <h3>A Quick Secret Note For You 💌</h3>
+                    <p class="envelope-teaser">Click below to unseal my message...</p>
+                    <button class="btn btn-primary" id="open-envelope-btn">Read Note</button>
+                    <div class="envelope-message hidden" id="envelope-message">
+                        <p class="quote">
+                            "I don't care if we sing off-key, get the words wrong, or hit the highest notes—being with you is my favorite song. Can't wait for tomorrow afternoon!"
+                        </p>
+                        <span class="signature">- Yours Always ❤️</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RSVP Section -->
+        <section id="rsvp" class="section-container rsvp-section">
+            <div class="rsvp-card glass-panel">
+                <div class="heart-pulse-icon">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+                <h2>Will You Be My Karaoke Date Tomorrow? 🎤💕</h2>
+                <p>Time: 1:30 PM - 3:30 PM | Venue: Cove Kafe Kirulapana</p>
+
+                <div class="rsvp-buttons">
+                    <button class="btn btn-yes glow-btn" id="yes-btn">
+                        <i class="fa-solid fa-circle-check"></i> YES! I'd Love To! 💖
+                    </button>
+                    <button class="btn btn-no" id="no-btn">
+                        No 🙈
+                    </button>
+                </div>
+                <div id="no-playful-msg" class="playful-msg"></div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Made with ❤️ for the most special girl | Karaoke Date at Cove Kafe ☕🎤</p>
+        </footer>
+
+    </div>
+
+    <!-- Celebration Modal upon RSVP YES -->
+    <div class="modal-overlay" id="rsvp-modal">
+        <div class="modal-content glass-panel">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <div class="modal-icon">
+                <i class="fa-solid fa-champagne-glasses"></i>
+            </div>
+            <h2>IT'S A DATE! 🎉💖</h2>
+            <p class="modal-sub">I can't wait to sing all these songs with you tomorrow!</p>
+            
+            <div class="modal-summary">
+                <div class="sum-row">
+                    <i class="fa-solid fa-calendar"></i>
+                    <span>Date: Tomorrow</span>
+                </div>
+                <div class="sum-row">
+                    <i class="fa-solid fa-clock"></i>
+                    <span>Time: 1:30 PM - 3:30 PM</span>
+                </div>
+                <div class="sum-row">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Venue: Cove Kafe, Kirulapana</span>
+                </div>
+            </div>
+
+            <div class="modal-songs-preview">
+                <strong>Opening Track:</strong> <span id="opening-song">Sobana / Perfect 🎶</span>
+            </div>
+
+            <button class="btn btn-primary glow-btn full-width" id="add-calendar-btn">
+                <i class="fa-solid fa-calendar-plus"></i> Add Reminder
+            </button>
+        </div>
+    </div>
+
+    <!-- JS Script -->
+    <script src="script.js"></script>
+</body>
+</html>
